@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461" y="251"/>
+            <point key="canvasLocation" x="-230" y="212"/>
         </scene>
         <!--Train View Controller-->
         <scene sceneID="hLD-xU-vTJ">
@@ -235,9 +235,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2C-t1-GV9">
-                                <rect key="frame" x="50" y="50" width="56" height="31"/>
+                                <rect key="frame" x="50" y="50" width="73.5" height="38"/>
+                                <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="back"/>
+                                <buttonConfiguration key="configuration" style="gray" title="back">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="20"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="oxq-6C-pyr" kind="unwind" unwindAction="unwindActionWithUnwindSegue:" id="ovV-PG-xrW"/>
                                 </connections>
@@ -305,11 +308,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SBe-B9-rgV"/>
+                    <connections>
+                        <outletCollection property="buttonCololections" destination="Bu8-nj-wBn" collectionClass="NSMutableArray" id="no9-vR-SU7"/>
+                        <outletCollection property="buttonCololections" destination="Qtr-9h-CjZ" collectionClass="NSMutableArray" id="Hy0-B6-S9a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XHp-pW-J9b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="oxq-6C-pyr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1373.913043478261" y="249.77678571428569"/>
+            <point key="canvasLocation" x="587" y="204"/>
         </scene>
     </scenes>
     <resources>
