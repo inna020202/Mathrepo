@@ -270,6 +270,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L33-ie-nIF"/>
+                                    <action selector="leftAction:" destination="qTP-8N-aYY" eventType="touchUpInside" id="kqU-h0-qSh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qtr-9h-CjZ">
@@ -291,6 +292,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HDJ-bY-wBZ"/>
+                                    <action selector="rightAction:" destination="qTP-8N-aYY" eventType="touchUpInside" id="g2J-Uu-cLl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -309,6 +311,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="SBe-B9-rgV"/>
                     <connections>
+                        <outlet property="leftButton" destination="Bu8-nj-wBn" id="JfD-4f-QX5"/>
+                        <outlet property="questionLabel" destination="Ckp-jJ-RG5" id="9pP-hy-WMC"/>
+                        <outlet property="rightButton" destination="Qtr-9h-CjZ" id="7Fw-Sd-WRL"/>
                         <outletCollection property="buttonCololections" destination="Bu8-nj-wBn" collectionClass="NSMutableArray" id="no9-vR-SU7"/>
                         <outletCollection property="buttonCololections" destination="Qtr-9h-CjZ" collectionClass="NSMutableArray" id="Hy0-B6-S9a"/>
                     </connections>
