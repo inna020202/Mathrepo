@@ -19,7 +19,11 @@ final class TrainViewController: UIViewController{
     private var firstNumber = 0
     private var secondNumber = 0
     private var sign: String = ""
-    private var count: Int = 0
+    private var count: Int = 0 {
+        didSet {
+            print("Count: \(count)")
+        }
+    }
     
     var type: MathTypes = .add{
         didSet {
@@ -70,7 +74,7 @@ final class TrainViewController: UIViewController{
     private func  configureButton(){
         let buttonsArray = [leftButton,rightButton]
         buttonsArray.forEach { button in
-            button?.backgroundColor = .yellow
+            button?.backgroundColor = .systemYellow
         //Add shadow
             buttonsArray.forEach { button in
             button?.layer.shadowColor = UIColor.darkGray.cgColor
@@ -99,13 +103,20 @@ final class TrainViewController: UIViewController{
      }
 private func check (answer: String, for button: UIButton) {
         let isRightAnswer = Int(answer) == self.answer
+    
         button.backgroundColor = isRightAnswer  ? .green : .red
-        if isRightAnswer {
-            count += 1
-            configureQuestion()
-            configureButton()
+        
+    if isRightAnswer {
+        let isSecondAttempt =  rightButton.backgroundColor == .red  || leftButton.backgroundColor == .red
+        
+        if !isSecondAttempt{
+        count += 1
+        }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.configureQuestion()
+                self?.configureButton()
                 
             }
         }
     }
-
+}
