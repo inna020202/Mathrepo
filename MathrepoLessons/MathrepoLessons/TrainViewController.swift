@@ -16,8 +16,10 @@ final class TrainViewController: UIViewController{
     @IBOutlet weak var questionLabel: UILabel!
     
     //MARK: - Properties
-    private var firstNumber = 0
-    private var secondNumber = 0
+    private var firstNumber: Double = 0.0
+    private var secondNumber: Double = 0.0
+   // private var selectedOperation: Int = 0
+   // private var correctAnswer: Double = 0.0
     private var sign: String = ""
     private var count: Int = 0 {
         didSet {
@@ -39,26 +41,29 @@ final class TrainViewController: UIViewController{
             }
         }
     }
-    private var  answer: Int{
-        switch type {
-        case .add:
-            return firstNumber + secondNumber
-        case .subtract:
-            return firstNumber - secondNumber
-        case .multiply:
-            return firstNumber * secondNumber
-        case .divide:
-            return firstNumber / secondNumber
-        
-        }
-    }
+  
+            
+    var  answer: Double {
+       switch type {
+       case .add:
+          return  firstNumber + secondNumber
+      case .subtract:
+          return firstNumber - secondNumber
+       case .multiply:
+   return firstNumber * secondNumber
+       case .divide:
+      return    firstNumber/secondNumber
 
-    
+       }
+}
+            
+               
+
     //MARK: - life cycle
     override func viewDidLoad() {
         // Do any additional setup after loading the view.
-    configureQuestion()
-       configureButton()
+        configureQuestion()
+        configureButton()
         }
     
     //MARK: - IBActions
@@ -82,28 +87,41 @@ final class TrainViewController: UIViewController{
             button?.layer.shadowOpacity = 0.4
             button?.layer.shadowRadius = 3
         }
-        
-        let isRightButton = Bool.random()
-        var randomAnswer: Int
-        repeat {
-          randomAnswer = Int.random(in: (answer - 10)...(answer+10))
-    } while randomAnswer == answer
-        
-        rightButton.setTitle(isRightButton ? String(answer) : String(randomAnswer), for: .normal)
-        leftButton.setTitle(isRightButton ? String(randomAnswer) : String(answer), for: .normal)
-    }
-    }
+        }
     
-   private func configureQuestion () {
-        firstNumber = Int.random (in: 1...99)
-        secondNumber = Int.random (in: 1...99)
-        
-        let question: String = "\(firstNumber) \(sign) \(secondNumber) = "
-        questionLabel.text  = question
-     }
-private func check (answer: String, for button: UIButton) {
-        let isRightAnswer = Int(answer) == self.answer
     
+              if Bool.random() {
+                rightButton.setTitle(String(format: "%.2f",answer ), for: .normal)
+                leftButton.setTitle(String(format: "%.2f", generateRandomAnswer()), for: .normal)
+            } else {
+                leftButton.setTitle(String(format: "%.2f",answer ), for: .normal)
+                rightButton.setTitle(String(format: "%.2f", generateRandomAnswer()), for: .normal)
+            }
+            
+            
+           
+            func generateRandomAnswer() -> Double{
+                let randomOffset = Double(Int.random(in: 1...99))
+                return answer + (randomOffset == 0 ? 1 : randomOffset)
+            }
+    }
+            
+           
+
+            func configureQuestion () {
+     firstNumber = Double(Int.random (in: 1...99))
+      secondNumber = Double(Int.random (in: 1...99))
+     
+   
+      
+      let question: String = "\(firstNumber) \(sign) \(secondNumber) = "
+      questionLabel.text  = question
+   }
+//private func check (answer: String, for button: UIButton) {
+     // let isRightAnswer = Int(answer) == self.answer
+    func check (answer: String, for button: UIButton) {
+           //let isRightAnswer = Int(answer) == self.answer
+        let isRightAnswer = Double(answer)  == self.answer
         button.backgroundColor = isRightAnswer  ? .green : .red
         
     if isRightAnswer {
@@ -119,4 +137,11 @@ private func check (answer: String, for button: UIButton) {
             }
         }
     }
-}
+        }
+    
+    
+    
+    
+    
+    
+    
