@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum MathTypes: Int {
+enum MathTypes: Double {
     case add, subtract, multiply, divide
 }
 
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     }
     //MARK: - Actions
     @IBAction func buttonAction(_ sender: UIButton) {
-        selectedType = MathTypes(rawValue: sender.tag) ?? .add
+        selectedType = MathTypes(rawValue: Double(sender.tag)) ?? .add
         performSegue(withIdentifier: "goToNext", sender: sender)
     }
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
             viewController.type = selectedType
         }
     }
-   
+    
     private func  configureButtons(){
         //Add shadow
         buttonCollections.forEach { button in
